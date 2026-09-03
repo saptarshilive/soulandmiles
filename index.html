@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curated Paths — journeys built around you</title>
+<meta name="description" content="Curated Paths designs one-off, slow journeys across India, planned around your dates, your pace and your people.">
+<meta property="og:title" content="Curated Paths">
+<meta property="og:description" content="Slow, soulful journeys across India, designed around what you ask for.">
+<meta property="og:image" content="images/hero-peaks.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="images/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ffffff;
+    --ink:#000000;
+    --body:#45494d;
+    --muted:#8b8f93;
+    --rule:#e4e1dc;
+    --pine:#1f4a3d;
+    --wash:#f7f6f3;
+    --sans:'Figtree', 'Google Sans', 'Product Sans', system-ui, -apple-system, sans-serif;
+    --display:var(--sans);
+    --gutter:clamp(20px, 6vw, 96px);
+    --measure:62ch;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--body);
+    font-family:var(--sans);
+    font-weight:400;
+    font-size:clamp(16px,1.05vw,18px);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;width:100%;height:auto}
+  a{color:inherit}
+  ::selection{background:#dfe7e2}
+  :focus-visible{outline:2px solid var(--pine);outline-offset:3px}
+
+  h1,h2,h3{font-family:var(--display);font-weight:600;color:var(--ink);letter-spacing:-.025em;line-height:1.08}
+  h1{font-size:clamp(2.2rem,5.2vw,4.2rem)}
+  h2{font-size:clamp(1.7rem,3.1vw,2.6rem);line-height:1.12}
+  h3{font-size:clamp(1.15rem,1.5vw,1.4rem);line-height:1.25;letter-spacing:-.015em}
+  .lede{font-size:clamp(1.05rem,1.3vw,1.25rem);line-height:1.6;font-weight:400;color:var(--body);max-width:52ch}
+  p{max-width:var(--measure)}
+  em{font-style:italic}
+
+  .wrap{padding-inline:var(--gutter)}
+  .band{padding-block:clamp(72px,10vw,150px)}
+  .rule-top{border-top:1px solid var(--rule)}
+
+  /* header */
+  .site-head{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+    padding:22px var(--gutter);
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--rule);
+  }
+  .mark{display:block;line-height:0}
+  .mark img{height:clamp(30px,3.2vw,42px);width:auto}
+  .nav{display:flex;gap:clamp(16px,2.4vw,34px);font-size:.92rem;font-weight:500}
+  .nav a{text-decoration:none;color:var(--body);padding-bottom:2px;border-bottom:1px solid transparent}
+  .nav a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+  @media (max-width:720px){.nav a:not(.nav-key){display:none}}
+
+  /* hero */
+  .hero{padding-block:clamp(64px,12vh,140px) clamp(40px,6vw,72px)}
+  .hero h1{max-width:20ch}
+  .hero .lede{margin-top:clamp(24px,3vw,38px)}
+  .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(30px,4vw,46px)}
+  .btn{
+    font-family:var(--sans);font-size:.95rem;font-weight:500;
+    padding:15px 26px;border:1px solid var(--ink);border-radius:999px;
+    background:var(--ink);color:#fff;text-decoration:none;cursor:pointer;
+    transition:background .2s ease,color .2s ease;
+  }
+  .btn:hover{background:var(--pine);border-color:var(--pine)}
+  .btn-quiet{background:transparent;color:var(--ink);border-color:var(--rule)}
+  .btn-quiet:hover{background:var(--wash);color:var(--ink);border-color:var(--ink)}
+
+  .strip{position:relative}
+  .strip img{aspect-ratio:21/8;object-fit:cover}
+  .cap{margin-top:12px;font-size:.88rem;font-weight:400;color:var(--muted);padding-inline:var(--gutter)}
+
+  /* steps */
+  .steps{display:grid;gap:clamp(36px,4vw,56px);grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:clamp(40px,5vw,64px)}
+  .step .num{font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--pine);display:block;margin-bottom:12px}
+  .step h3{margin-bottom:10px}
+  .step p{max-width:36ch}
+
+  /* held-to list */
+  .holds{margin-top:clamp(40px,5vw,64px);border-top:1px solid var(--rule)}
+  .hold{display:grid;grid-template-columns:minmax(0,7.5rem) minmax(0,1fr);gap:clamp(16px,3vw,48px);padding-block:clamp(24px,3vw,34px);border-bottom:1px solid var(--rule);align-items:start}
+  .hold h3{font-size:clamp(1.1rem,1.4vw,1.35rem)}
+  .hold p{max-width:56ch}
+  @media (max-width:640px){.hold{grid-template-columns:1fr;gap:8px}}
+
+  /* gallery */
+  .gal{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,1.6vw,26px);margin-top:clamp(40px,5vw,64px)}
+  .shot{margin:0;grid-column:span 6}
+  .shot.wide{grid-column:span 12}
+  .shot.third{grid-column:span 4}
+  .shot img{object-fit:cover;width:100%}
+  .shot.tall img{aspect-ratio:3/4}
+  .shot.land img{aspect-ratio:4/3}
+  .shot.pano img{aspect-ratio:21/9}
+  .shot figcaption{margin-top:10px;font-size:.9rem;color:var(--muted);max-width:44ch}
+  @media (max-width:760px){.shot,.shot.third,.shot.wide{grid-column:span 12}}
+
+  /* about */
+  .about{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:center}
+  .about img{aspect-ratio:4/5;object-fit:cover}
+  @media (max-width:820px){.about{grid-template-columns:1fr}}
+
+  .motion{display:grid;grid-template-columns:minmax(0,.6fr) minmax(0,1fr);gap:clamp(14px,1.6vw,26px);margin-top:clamp(40px,5vw,64px);align-items:start}
+  .stack{display:grid;gap:clamp(14px,1.6vw,26px)}
+  .clip{margin:0}
+  .clip video{width:100%;display:block;background:var(--wash);object-fit:cover}
+  .clip.tall video{aspect-ratio:9/16}
+  .stack .clip video{aspect-ratio:16/9}
+  .clip.wide{margin-top:clamp(14px,1.6vw,26px)}
+  .clip.wide video{aspect-ratio:21/9}
+  .clip figcaption{margin-top:10px;font-size:.9rem;color:var(--muted);max-width:46ch}
+  @media (max-width:760px){
+    .motion{grid-template-columns:1fr}
+    .clip.tall video{aspect-ratio:3/4}
+    .clip.wide video{aspect-ratio:16/9}
+  }
+  .press{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1fr);gap:clamp(26px,4vw,64px);align-items:center;margin-top:clamp(44px,6vw,88px);padding-top:clamp(36px,4vw,56px);border-top:1px solid var(--rule)}
+  @media (max-width:820px){.press{grid-template-columns:1fr}}
+  .cutting{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;font:inherit}
+  .cutting img{border:1px solid var(--rule);padding:10px;background:var(--paper);transform:rotate(-1.2deg);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .cutting:hover img,.cutting:focus-visible img{transform:rotate(0deg)}
+  .press-note{margin-top:14px;font-size:.88rem;color:var(--muted);max-width:40ch}
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(138px,1fr));gap:clamp(18px,2.4vw,32px);margin-top:clamp(28px,3vw,40px)}
+  .facts div{border-top:1px solid var(--rule);padding-top:14px}
+  .facts b{display:block;font-family:var(--display);font-weight:600;font-size:1.35rem;letter-spacing:-.02em;color:var(--ink);line-height:1.2}
+  .facts span{font-size:.9rem;color:var(--muted)}
+  .lightbox{position:fixed;inset:0;z-index:100;background:rgba(255,255,255,.97);display:none;align-items:center;justify-content:center;padding:clamp(16px,3vw,48px)}
+  .lightbox[open]{display:flex}
+  .lightbox img{max-width:min(760px,100%);max-height:92vh;width:auto;object-fit:contain;border:1px solid var(--rule)}
+  .lightbox button{position:absolute;top:18px;right:18px;font:inherit;font-size:.92rem;font-weight:500;background:var(--paper);border:1px solid var(--ink);border-radius:999px;padding:9px 20px;cursor:pointer}
+  .pull{font-family:var(--display);font-weight:500;font-size:clamp(1.3rem,2.2vw,1.9rem);line-height:1.3;letter-spacing:-.02em;color:var(--ink);max-width:36ch}
+  .pull em{font-style:italic}
+
+  /* enquiry */
+  .enq{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,80px)}
+  @media (max-width:900px){.enq{grid-template-columns:1fr}}
+  .field{margin-bottom:22px}
+  .field label{display:block;font-size:.88rem;font-weight:500;color:var(--ink);margin-bottom:8px}
+  .field input,.field select,.field textarea{
+    width:100%;font-family:var(--sans);font-size:1rem;font-weight:400;color:var(--ink);
+    background:var(--paper);border:0;border-bottom:1px solid var(--rule);
+    padding:10px 2px;border-radius:0;
+  }
+  .field textarea{resize:vertical;min-height:96px;line-height:1.6}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:0;border-bottom-color:var(--pine)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media (max-width:520px){.two{grid-template-columns:1fr}}
+  .err{color:#8a2b22;font-size:.85rem;margin-top:10px;min-height:1.2em}
+  .direct{margin-top:34px;padding-top:26px;border-top:1px solid var(--rule);font-size:.95rem}
+  .direct a{text-decoration:none;border-bottom:1px solid var(--rule)}
+  .direct a:hover{border-bottom-color:var(--ink)}
+
+  .site-foot{padding:clamp(40px,5vw,64px) var(--gutter);border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:.88rem;color:var(--muted)}
+
+  .fade{opacity:0;transform:translateY(10px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+  .fade-2{animation-delay:.12s}
+  .fade-3{animation-delay:.24s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .fade{animation:none;opacity:1;transform:none}
+    *{transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <a class="mark" href="#top" aria-label="Curated Paths — top of page"><img src="images/logo.png" alt="Curated Paths"></a>
+  <nav class="nav" aria-label="Sections">
+    <a href="#how">How it works</a>
+    <a href="#journeys">Journeys</a>
+    <a href="#motion">In motion</a>
+    <a href="#about">Who we are</a>
+    <a class="nav-key" href="#plan">Plan yours</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="wrap hero">
+    <h1 class="fade">You tell us what the trip needs to feel like. We build the path.</h1>
+    <p class="lede fade fade-2">Curated Paths designs one-off journeys across India — slow, offbeat, and shaped around your dates, your pace and the people you're travelling with. Nothing pulled off a shelf.</p>
+    <div class="actions fade fade-3">
+      <a class="btn" href="#plan">Start with a conversation</a>
+      <a class="btn btn-quiet" href="#journeys">See where we've been</a>
+    </div>
+  </section>
+
+  <figure class="strip">
+    <img src="images/hero-peaks.jpg" alt="First light striking a snow-covered Himalayan range above dark foothills" loading="eager">
+    <figcaption class="cap">First light on the high range, before the valley wakes up.</figcaption>
+  </figure>
+
+  <section class="wrap band rule-top" id="how" style="margin-top:clamp(48px,7vw,110px)">
+    <h2>How a journey gets made</h2>
+    <p class="lede" style="margin-top:22px">There is no catalogue to choose from. Every path starts with a conversation and ends up somewhere only you would have asked for.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="num">1</span>
+        <h3>Tell us the shape of it</h3>
+        <p>A week in the hills with your parents. Ten quiet days somewhere green. A river, a temple, and no schedule at all. Feelings are enough to start.</p>
+      </div>
+      <div class="step">
+        <span class="num">2</span>
+        <h3>We draft the path</h3>
+        <p>You get it in writing — routes, stays, drive times, where you'll eat, how hard the walking gets. Then you change whatever doesn't sit right.</p>
+      </div>
+      <div class="step">
+        <span class="num">3</span>
+        <h3>We walk it with you</h3>
+        <p>Local hosts and guides we know by name, one coordinator reachable through the trip, and room left in the day for what you didn't plan.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap band rule-top">
+    <h2>What we hold to</h2>
+    <div class="holds">
+      <div class="hold">
+        <h3>Slow</h3>
+        <p>Fewer places, longer stays. Three nights somewhere ordinary teaches you more than eight sights in four days.</p>
+      </div>
+      <div class="hold">
+        <h3>Offbeat</h3>
+        <p>Valleys, trails and towns that never made the circuit. If a place is crowded, we go a valley further or a season earlier.</p>
+      </div>
+      <div class="hold">
+        <h3>Hosted</h3>
+        <p>Homestays and family-run places wherever they exist, so the money stays in the village and someone eats with you.</p>
+      </div>
+      <div class="hold">
+        <h3>Small</h3>
+        <p>Your own group, or a handful of people at most. Never a coach, never a flag, never a stranger's itinerary.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap band rule-top" id="journeys">
+    <h2>Paths we've already walked</h2>
+    <p class="lede" style="margin-top:22px">These were built for particular people, with particular reasons. Yours won't look like any of them — but they show the range we work across.</p>
+
+    <div class="gal">
+      <figure class="shot wide pano">
+        <img src="images/range-blue.jpg" alt="A long wall of snow peaks under a deep blue sky" loading="lazy">
+        <figcaption>High Himalaya in clear season, for two travellers who wanted altitude without a technical climb.</figcaption>
+      </figure>
+
+      <figure class="shot tall">
+        <img src="images/shrine.jpg" alt="A traveller with hands raised in prayer before a snowbound peak, prayer flags overhead" loading="lazy">
+        <figcaption>A pilgrimage walk taken at a mother's pace, with rest days written into the route.</figcaption>
+      </figure>
+
+      <figure class="shot tall">
+        <img src="images/bamboo-river.jpg" alt="A person sitting in a woven bamboo circle on a deck above a green river" loading="lazy">
+        <figcaption>Ten days in the north-east for someone who asked only for rain, rivers and no plan.</figcaption>
+      </figure>
+
+      <figure class="shot land">
+        <img src="images/waterfall.jpg" alt="A group standing on rocks at the foot of a wide waterfall" loading="lazy">
+        <figcaption>A small group who met as strangers and now travel together twice a year.</figcaption>
+      </figure>
+
+      <figure class="shot land">
+        <img src="images/camp-night.jpg" alt="A lit riverside camp with thatched huts reflected in still water at night" loading="lazy">
+        <figcaption>A riverside camp reached late, kept awake by frogs and one long conversation.</figcaption>
+      </figure>
+
+      <figure class="shot third land">
+        <img src="images/forest-trail.jpg" alt="A forest path curving beside still water in low evening light" loading="lazy">
+        <figcaption>Morning walks that were the whole point of the trip.</figcaption>
+      </figure>
+
+      <figure class="shot third land">
+        <img src="images/mithun.jpg" alt="A large wild bovine grazing in an open forest clearing" loading="lazy">
+        <figcaption>Wildlife met on foot, with a guide who grew up in that forest.</figcaption>
+      </figure>
+
+      <figure class="shot third land">
+        <img src="images/food.jpg" alt="Bowls of a local dessert served on a stone table, hands reaching in" loading="lazy">
+        <figcaption>Meals cooked by our hosts, eaten where they eat.</figcaption>
+      </figure>
+
+      <figure class="shot land">
+        <img src="images/raft.jpg" alt="A bamboo raft carrying a group across a wide brown river" loading="lazy">
+        <figcaption>A crossing that wasn't on the itinerary and became the story everyone tells.</figcaption>
+      </figure>
+
+      <figure class="shot land">
+        <img src="images/snowfield.jpg" alt="A lone figure standing arms wide on a bare ridge surrounded by snowfields" loading="lazy">
+        <figcaption>Where the trail runs out and the snow begins — the last morning of a long walk.</figcaption>
+      </figure>
+
+      <figure class="shot tall">
+        <img src="images/moraine.jpg" alt="A walker with trekking poles standing on a glacial moraine below cloud-covered peaks" loading="lazy">
+        <figcaption>A slow climb over moraine, at a pace set by the walker and nobody else.</figcaption>
+      </figure>
+
+      <figure class="shot tall">
+        <img src="images/valley.jpg" alt="A green valley under gathering cloud, forest running up both slopes" loading="lazy">
+        <figcaption>The valley we come back to whenever someone asks for green and quiet.</figcaption>
+      </figure>
+
+      <figure class="shot third land">
+        <img src="images/meadow.jpg" alt="An open green meadow ringed by mountains under a bright sky" loading="lazy">
+        <figcaption>High meadows, open for only a few weeks a year.</figcaption>
+      </figure>
+
+      <figure class="shot third land">
+        <img src="images/river-tree.jpg" alt="Someone sitting on a fallen tree stretched across a shallow forest river" loading="lazy">
+        <figcaption>Afternoons with nothing at all scheduled after lunch.</figcaption>
+      </figure>
+
+      <figure class="shot third land">
+        <img src="images/dusk-river.jpg" alt="A wide river at dusk with the lights of a small town along the far bank" loading="lazy">
+        <figcaption>Dusk on the river, the day's driving finally done.</figcaption>
+      </figure>
+
+      <figure class="shot wide pano">
+        <img src="images/rafting-jump.jpg" alt="A rafter leaping from a raft into a green river beside a wooded bank" loading="lazy">
+        <figcaption>Built for two travellers who asked that every day include water.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap band rule-top" id="motion">
+    <h2>Nine seconds at a time</h2>
+    <p class="lede" style="margin-top:22px">Clips from recent journeys, running without sound. Roads, water, and the pace of an ordinary morning on the trail.</p>
+
+    <div class="motion">
+      <figure class="clip tall">
+        <video src="video/waterfall.mp4" poster="images/poster-waterfall.jpg" autoplay muted loop playsinline preload="metadata"></video>
+        <figcaption>A waterfall you hear a long time before you see it.</figcaption>
+      </figure>
+      <div class="stack">
+        <figure class="clip">
+          <video src="video/forest-walk.mp4" poster="images/poster-forest-walk.jpg" autoplay muted loop playsinline preload="metadata"></video>
+          <figcaption>Walking out through old forest, first hour of the day.</figcaption>
+        </figure>
+        <figure class="clip">
+          <video src="video/mountain-road.mp4" poster="images/poster-mountain-road.jpg" autoplay muted loop playsinline preload="metadata"></video>
+          <figcaption>The kind of road that makes the drive part of the trip.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <figure class="clip wide">
+      <video src="video/village-peaks.mp4" poster="images/poster-village-peaks.jpg" autoplay muted loop playsinline preload="metadata"></video>
+      <figcaption>Stone houses, and the peaks that sit above them all day.</figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap band rule-top" id="about">
+    <div class="about">
+      <img src="images/milan.jpg" alt="Milan Mistry, founder of Curated Paths" loading="lazy">
+      <div>
+        <h2>Milan Mistry</h2>
+        <p style="margin-top:20px">Milan has spent thirty years on high-altitude trails — Everest Base Camp, Yankar Pass at 15,000 ft, the Valley of Flowers at 14,400, Hamta Pass, Brahmatal, Roopkund — and rather longer sitting in kitchens in small towns, working out who to trust with other people's holidays.</p>
+        <p style="margin-top:18px">She plans every Curated Paths journey herself and travels most of them. If you write in, she is the one who replies.</p>
+        <p class="pull" style="margin-top:34px">The best trips aren't the ones we <em>designed</em>. They're the ones someone described to us badly, and we understood anyway.</p>
+      </div>
+    </div>
+
+    <figure class="shot wide pano" style="margin-top:clamp(32px,4vw,56px)">
+      <img src="images/ebc-flag.jpg" alt="Milan holding an Indian flag beside the painted Everest Base Camp rock in mist" loading="lazy">
+      <figcaption>Everest Base Camp, in the weather it usually gives you.</figcaption>
+    </figure>
+
+    <div class="press">
+      <button class="cutting" id="open-clip" aria-label="Open the full newspaper profile of Milan Mistry">
+        <img src="images/press-clipping.jpg" alt="A Gujarati newspaper page profiling Milan Mistry, with a photograph of her holding a flag at Everest Base Camp" loading="lazy">
+        <span class="press-note">Read the full page — Gujarati. Tap to enlarge.</span>
+      </button>
+
+      <div>
+        <p class="pull">Not age — spirit decides which way the journey goes.</p>
+        <p style="margin-top:24px">That was the headline when a Gujarati daily profiled Milan at 64: twenty-five hard treks in thirty-two years, starting with Pachmarhi in 1994 on a Youth Hostels trip, and a job left behind somewhere along the way.</p>
+        <p style="margin-top:18px">The paper also carried the part she doesn't bring up herself. Covid took most of her lung capacity. At sixty she bought herself a bicycle so that altitude would stay possible, and she has been riding thirty kilometres, three mornings a week, ever since.</p>
+        <div class="facts">
+          <div><b>1994</b><span>first trek, Pachmarhi</span></div>
+          <div><b>25</b><span>high treks since</span></div>
+          <div><b>15,000 ft</b><span>highest of them</span></div>
+          <div><b>90 km</b><span>cycled each week</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap band rule-top" id="plan">
+    <div class="enq">
+      <div>
+        <h2>Plan yours</h2>
+        <p class="lede" style="margin-top:22px">Tell us roughly what you're after. A few lines is plenty — we'll come back with questions before we come back with a plan.</p>
+        <div class="direct">
+          <p>Or reach us directly:<br>
+          <a href="https://wa.me/919825110715">WhatsApp +91 98251 10715</a><br>
+          <a href="mailto:enquiry@curatedpaths.in">enquiry@curatedpaths.in</a></p>
+        </div>
+      </div>
+
+      <div>
+        <div class="two">
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" type="text" autocomplete="name" placeholder="Milan Mistry">
+          </div>
+          <div class="field">
+            <label for="f-when">Roughly when</label>
+            <input id="f-when" type="text" placeholder="Late October, 8 days">
+          </div>
+        </div>
+        <div class="two">
+          <div class="field">
+            <label for="f-who">Who's coming</label>
+            <input id="f-who" type="text" placeholder="Two of us and my father">
+          </div>
+          <div class="field">
+            <label for="f-pace">Pace</label>
+            <select id="f-pace">
+              <option>Slow — long stays, short days</option>
+              <option>Balanced — some walking, some rest</option>
+              <option>Active — trails and altitude</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-want">What should this trip feel like?</label>
+          <textarea id="f-want" placeholder="Somewhere green and quiet, near water. No temples, no shopping. My father tires by four in the afternoon."></textarea>
+        </div>
+        <button class="btn" id="send" type="button">Send this on WhatsApp</button>
+        <p class="err" id="err" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="lightbox" id="clip-box" role="dialog" aria-modal="true" aria-label="Newspaper profile of Milan Mistry">
+  <button type="button" id="close-clip">Close</button>
+  <img src="images/press-clipping.jpg" alt="Full newspaper page profiling Milan Mistry">
+</div>
+
+<footer class="site-foot">
+  <span>Curated Paths — journeys made to order, across India.</span>
+  <span>&copy; <span id="yr">2026</span> Curated Paths</span>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var byId = function(id){ return document.getElementById(id); };
+  byId('send').addEventListener('click', function(){
+    var name = byId('f-name').value.trim();
+    var want = byId('f-want').value.trim();
+    var err = byId('err');
+    if(!name || !want){
+      err.textContent = !name ? 'Add your name first.' : 'Tell us a little about the trip first.';
+      (!name ? byId('f-name') : byId('f-want')).focus();
+      return;
+    }
+    err.textContent = '';
+    var lines = [
+      'Hello Curated Paths — I would like to plan a journey.',
+      '',
+      'Name: ' + name,
+      'When: ' + (byId('f-when').value.trim() || 'flexible'),
+      'Who: ' + (byId('f-who').value.trim() || 'to be confirmed'),
+      'Pace: ' + byId('f-pace').value,
+      '',
+      want
+    ];
+    window.open('https://wa.me/919825110715?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
+  });
+  var box = byId('clip-box');
+  var openClip = function(){ box.setAttribute('open',''); byId('close-clip').focus(); };
+  var closeClip = function(){ box.removeAttribute('open'); byId('open-clip').focus(); };
+  byId('open-clip').addEventListener('click', openClip);
+  byId('close-clip').addEventListener('click', closeClip);
+  box.addEventListener('click', function(e){ if(e.target === box) closeClip(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && box.hasAttribute('open')) closeClip(); });
+
+  var clips = Array.prototype.slice.call(document.querySelectorAll('.clip video'));
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    clips.forEach(function(v){ v.removeAttribute('autoplay'); v.controls = true; v.pause(); });
+  } else if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.play().catch(function(){ e.target.controls = true; }); }
+        else { e.target.pause(); }
+      });
+    }, {rootMargin:'150px'});
+    clips.forEach(function(v){ io.observe(v); });
+  }
+
+  ['f-name','f-want'].forEach(function(id){
+    byId(id).addEventListener('input', function(){ byId('err').textContent = ''; });
+  });
+</script>
+</body>
+</html>
