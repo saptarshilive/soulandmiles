@@ -7,7 +7,7 @@
 <meta name="description" content="Curated Paths designs one-off, slow journeys across India, planned around your dates, your pace and your people.">
 <meta property="og:title" content="Curated Paths">
 <meta property="og:description" content="Slow, soulful journeys across India, designed around what you ask for.">
-<meta property="og:image" content="images/hero-peaks.jpg">
+<meta property="og:image" content="images/hero/hero-1.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="images/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -17,7 +17,7 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Merriweather:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#ffffff;
@@ -28,7 +28,7 @@
     --pine:#1f4a3d;
     --wash:#f7f6f3;
     --sans:'Figtree', 'Google Sans', 'Product Sans', system-ui, -apple-system, sans-serif;
-    --display:var(--sans);
+    --display:'Merriweather', Georgia, 'Times New Roman', serif;
     --gutter:clamp(20px, 6vw, 96px);
     --measure:62ch;
   }
@@ -48,10 +48,10 @@
   ::selection{background:#dfe7e2}
   :focus-visible{outline:2px solid var(--pine);outline-offset:3px}
 
-  h1,h2,h3{font-family:var(--display);font-weight:600;color:var(--ink);letter-spacing:-.025em;line-height:1.08}
-  h1{font-size:clamp(2.2rem,5.2vw,4.2rem)}
-  h2{font-size:clamp(1.7rem,3.1vw,2.6rem);line-height:1.12}
-  h3{font-size:clamp(1.15rem,1.5vw,1.4rem);line-height:1.25;letter-spacing:-.015em}
+  h1,h2,h3{font-family:var(--display);font-weight:600;color:var(--ink);letter-spacing:-.012em;line-height:1.24}
+  h1{font-size:clamp(1.95rem,4.3vw,3.4rem);line-height:1.2}
+  h2{font-size:clamp(1.45rem,2.5vw,2.1rem);line-height:1.22}
+  h3{font-size:clamp(1.05rem,1.3vw,1.22rem);font-weight:700;line-height:1.35;letter-spacing:-.005em}
   .lede{font-size:clamp(1.05rem,1.3vw,1.25rem);line-height:1.6;font-weight:400;color:var(--body);max-width:52ch}
   p{max-width:var(--measure)}
   em{font-style:italic}
@@ -91,13 +91,26 @@
   .btn-quiet{background:transparent;color:var(--ink);border-color:var(--rule)}
   .btn-quiet:hover{background:var(--wash);color:var(--ink);border-color:var(--ink)}
 
-  .strip{position:relative}
-  .strip img{aspect-ratio:21/8;object-fit:cover}
-  .cap{margin-top:12px;font-size:.88rem;font-weight:400;color:var(--muted);padding-inline:var(--gutter)}
+  .strip{position:relative;margin:0 auto;max-width:1200px}
+  .slider{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--wash)}
+  .slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease-in-out}
+  .slide.is-on{opacity:1}
+  .slide img{width:100%;height:100%;object-fit:cover;display:block}
+  .dots{position:absolute;right:clamp(16px,2.4vw,32px);bottom:clamp(16px,2.4vw,30px);z-index:3;display:flex;gap:8px}
+  .dots button{width:8px;height:8px;padding:0;border-radius:50%;border:1px solid rgba(255,255,255,.9);
+    background:transparent;cursor:pointer;transition:background .25s ease}
+  .dots button[aria-current="true"]{background:#fff}
+  .dots button:hover{background:rgba(255,255,255,.6)}
+  .cap{margin-top:12px;font-size:.88rem;font-weight:400;color:var(--muted);padding-inline:var(--gutter);min-height:1.4em}
+  @media (max-width:760px){
+    .strip{max-width:none}
+    .slider{aspect-ratio:4/5}
+  }
+  @media (prefers-reduced-motion:reduce){.slide{transition:none}}
 
   /* steps */
   .steps{display:grid;gap:clamp(36px,4vw,56px);grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:clamp(40px,5vw,64px)}
-  .step .num{font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--pine);display:block;margin-bottom:12px}
+  .step .num{font-family:var(--display);font-size:1.05rem;font-weight:700;color:var(--pine);display:block;margin-bottom:12px}
   .step h3{margin-bottom:10px}
   .step p{max-width:36ch}
 
@@ -147,13 +160,13 @@
   .press-note{margin-top:14px;font-size:.88rem;color:var(--muted);max-width:40ch}
   .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(138px,1fr));gap:clamp(18px,2.4vw,32px);margin-top:clamp(28px,3vw,40px)}
   .facts div{border-top:1px solid var(--rule);padding-top:14px}
-  .facts b{display:block;font-family:var(--display);font-weight:600;font-size:1.35rem;letter-spacing:-.02em;color:var(--ink);line-height:1.2}
+  .facts b{display:block;font-family:var(--display);font-weight:700;font-size:1.2rem;letter-spacing:-.005em;color:var(--ink);line-height:1.3}
   .facts span{font-size:.9rem;color:var(--muted)}
   .lightbox{position:fixed;inset:0;z-index:100;background:rgba(255,255,255,.97);display:none;align-items:center;justify-content:center;padding:clamp(16px,3vw,48px)}
   .lightbox[open]{display:flex}
   .lightbox img{max-width:min(760px,100%);max-height:92vh;width:auto;object-fit:contain;border:1px solid var(--rule)}
   .lightbox button{position:absolute;top:18px;right:18px;font:inherit;font-size:.92rem;font-weight:500;background:var(--paper);border:1px solid var(--ink);border-radius:999px;padding:9px 20px;cursor:pointer}
-  .pull{font-family:var(--display);font-weight:500;font-size:clamp(1.3rem,2.2vw,1.9rem);line-height:1.3;letter-spacing:-.02em;color:var(--ink);max-width:36ch}
+  .pull{font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(1.15rem,1.9vw,1.65rem);line-height:1.45;letter-spacing:-.005em;color:var(--ink);max-width:38ch}
   .pull em{font-style:italic}
 
   /* enquiry */
@@ -213,8 +226,61 @@
   </section>
 
   <figure class="strip">
-    <img src="images/hero-peaks.jpg" alt="First light striking a snow-covered Himalayan range above dark foothills" loading="eager">
-    <figcaption class="cap">First light on the high range, before the valley wakes up.</figcaption>
+    <div class="slider" id="slider" aria-roledescription="carousel" aria-label="Places across India">
+      <picture class="slide is-on" data-cap="A valley that stays green while the peaks above it stay white.">
+        <source media="(max-width:760px)" srcset="images/hero/hero-1-p.jpg">
+        <img src="images/hero/hero-1-1200.jpg" srcset="images/hero/hero-1-1200.jpg 1200w, images/hero/hero-1.jpg 2000w" sizes="(max-width:760px) 100vw, min(1200px, 100vw)" alt="A green valley below jagged snow peaks, pine forest running down both slopes" fetchpriority="high">
+      </picture>
+      <picture class="slide" data-cap="Evening aarti on the ghats, lamps lifted to the river.">
+        <source media="(max-width:760px)" srcset="images/hero/hero-2-p.jpg">
+        <img src="images/hero/hero-2-1200.jpg" srcset="images/hero/hero-2-1200.jpg 1200w, images/hero/hero-2.jpg 2000w" sizes="(max-width:760px) 100vw, min(1200px, 100vw)" alt="Priests in gold raising fire lamps at a river aarti at night" loading="lazy">
+      </picture>
+      <picture class="slide" data-cap="Meadows that flower for a few weeks and are grazing land again by August.">
+        <source media="(max-width:760px)" srcset="images/hero/hero-3-p.jpg">
+        <img src="images/hero/hero-3-1200.jpg" srcset="images/hero/hero-3-1200.jpg 1200w, images/hero/hero-3.jpg 2000w" sizes="(max-width:760px) 100vw, min(1200px, 100vw)" alt="A meadow of white daisies below a dark pine ridge, a road curving through" loading="lazy">
+      </picture>
+      <picture class="slide" data-cap="A monastery holding the ridge above the valley it looks after.">
+        <source media="(max-width:760px)" srcset="images/hero/hero-4-p.jpg">
+        <img src="images/hero/hero-4-1200.jpg" srcset="images/hero/hero-4-1200.jpg 1200w, images/hero/hero-4.jpg 2000w" sizes="(max-width:760px) 100vw, min(1200px, 100vw)" alt="A whitewashed hillside monastery with golden roofs above terraced forest" loading="lazy">
+      </picture>
+      <picture class="slide" data-cap="Camp at first light, before anyone has decided to get up.">
+        <source media="(max-width:760px)" srcset="images/hero/hero-5-p.jpg">
+        <img src="images/hero/hero-5-1200.jpg" srcset="images/hero/hero-5-1200.jpg 1200w, images/hero/hero-5.jpg 2000w" sizes="(max-width:760px) 100vw, min(1200px, 100vw)" alt="Orange tents on an alpine meadow at sunrise with a snow peak behind" loading="lazy">
+      </picture>
+      <picture class="slide" data-cap="The desert at the one hour of the day worth crossing it.">
+        <source media="(max-width:760px)" srcset="images/hero/hero-6-p.jpg">
+        <img src="images/hero/hero-6-1200.jpg" srcset="images/hero/hero-6-1200.jpg 1200w, images/hero/hero-6.jpg 2000w" sizes="(max-width:760px) 100vw, min(1200px, 100vw)" alt="Camels and their handlers crossing a dune ridge at sunset" loading="lazy">
+      </picture>
+      <picture class="slide" data-cap="Monsoon country, where the river runs the colour of the hills.">
+        <source media="(max-width:760px)" srcset="images/hero/hero-7-p.jpg">
+        <img src="images/hero/hero-7-1200.jpg" srcset="images/hero/hero-7-1200.jpg 1200w, images/hero/hero-7.jpg 2000w" sizes="(max-width:760px) 100vw, min(1200px, 100vw)" alt="A wide brown river between palm-covered hills under monsoon cloud" loading="lazy">
+      </picture>
+      <picture class="slide" data-cap="Still water, carved wood, and no particular hurry.">
+        <source media="(max-width:760px)" srcset="images/hero/hero-8-p.jpg">
+        <img src="images/hero/hero-8-1200.jpg" srcset="images/hero/hero-8-1200.jpg 1200w, images/hero/hero-8.jpg 2000w" sizes="(max-width:760px) 100vw, min(1200px, 100vw)" alt="A shikara boat on still water in front of carved wooden houseboats" loading="lazy">
+      </picture>
+      <picture class="slide" data-cap="Right of way on the forest track belongs to whoever is lying on it.">
+        <source media="(max-width:760px)" srcset="images/hero/hero-9-p.jpg">
+        <img src="images/hero/hero-9-1200.jpg" srcset="images/hero/hero-9-1200.jpg 1200w, images/hero/hero-9.jpg 2000w" sizes="(max-width:760px) 100vw, min(1200px, 100vw)" alt="Lionesses resting on a forest track with safari jeeps waiting behind" loading="lazy">
+      </picture>
+      <picture class="slide" data-cap="Autumn on a river bank, with the walking season nearly over.">
+        <source media="(max-width:760px)" srcset="images/hero/hero-10-p.jpg">
+        <img src="images/hero/hero-10-1200.jpg" srcset="images/hero/hero-10-1200.jpg 1200w, images/hero/hero-10.jpg 2000w" sizes="(max-width:760px) 100vw, min(1200px, 100vw)" alt="A stony river bank in autumn below forested mountains" loading="lazy">
+      </picture>
+      <div class="dots" id="dots">
+        <button type="button" data-go="0" aria-label="Show picture 1 of 10" aria-current="true"></button>
+        <button type="button" data-go="1" aria-label="Show picture 2 of 10"></button>
+        <button type="button" data-go="2" aria-label="Show picture 3 of 10"></button>
+        <button type="button" data-go="3" aria-label="Show picture 4 of 10"></button>
+        <button type="button" data-go="4" aria-label="Show picture 5 of 10"></button>
+        <button type="button" data-go="5" aria-label="Show picture 6 of 10"></button>
+        <button type="button" data-go="6" aria-label="Show picture 7 of 10"></button>
+        <button type="button" data-go="7" aria-label="Show picture 8 of 10"></button>
+        <button type="button" data-go="8" aria-label="Show picture 9 of 10"></button>
+        <button type="button" data-go="9" aria-label="Show picture 10 of 10"></button>
+      </div>
+    </div>
+    <figcaption class="cap" id="strip-cap">A valley that stays green while the peaks above it stay white.</figcaption>
   </figure>
 
   <section class="wrap band rule-top" id="how" style="margin-top:clamp(48px,7vw,110px)">
@@ -496,6 +562,22 @@
     ];
     window.open('https://wa.me/919825110715?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
   });
+  var slides = Array.prototype.slice.call(document.querySelectorAll('#slider .slide'));
+  var pips = Array.prototype.slice.call(document.querySelectorAll('#dots button'));
+  var at = 0, roll = null;
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var show = function(n){
+    at = (n + slides.length) % slides.length;
+    slides.forEach(function(s,i){ s.classList.toggle('is-on', i === at); });
+    var cap = byId('strip-cap');
+    if(cap){ cap.textContent = slides[at].getAttribute('data-cap') || ''; }
+    pips.forEach(function(p,i){ p.setAttribute('aria-current', i === at ? 'true' : 'false'); });
+  };
+  var run = function(){ if(still) return; clearInterval(roll); roll = setInterval(function(){ show(at + 1); }, 5000); };
+  pips.forEach(function(p){ p.addEventListener('click', function(){ show(+p.getAttribute('data-go')); run(); }); });
+  document.addEventListener('visibilitychange', function(){ document.hidden ? clearInterval(roll) : run(); });
+  run();
+
   var box = byId('clip-box');
   var openClip = function(){ box.setAttribute('open',''); byId('close-clip').focus(); };
   var closeClip = function(){ box.removeAttribute('open'); byId('open-clip').focus(); };
